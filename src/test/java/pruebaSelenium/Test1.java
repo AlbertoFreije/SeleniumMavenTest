@@ -67,7 +67,7 @@ public class Test1 {
 	@Test 
 	public void conectarPagina() {
 		
-		 System.setProperty("webdriver.chrome.driver","\\var\\jenkins_home\\workspace\\Selenium-Zap\\chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver","./chromedriver.exe");
 		 driver = new ChromeDriver();
 		 String expectedTitle = "Welcome to the Simple Travel Agency!";
 	     //String actualTitle = "";
