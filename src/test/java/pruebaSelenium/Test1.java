@@ -67,7 +67,7 @@ public class Test1 {
 	@Test 
 	public void conectarPagina() {
 		
-		 System.setProperty("webdriver.chrome.driver","./chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver","/var/jenkins_home/workspace/Selenium-Zap/chromedriver");
 		 driver = new ChromeDriver();
 		 String expectedTitle = "Welcome to the Simple Travel Agency!";
 	     //String actualTitle = "";
@@ -83,7 +83,7 @@ public class Test1 {
 	public void findFlights() {
 		
 		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-		 System.setProperty("webdriver.chrome.driver","/var/jenkins_home/workspace/Selenium-Zap/chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver","/var/jenkins_home/workspace/Selenium-Zap/chromedriver");
 		 driver = new ChromeDriver();
 		 driver.navigate().to(URL);
 		 List<WebElement> elementos = checkElement(driver, "free","/html/body/div[3]/form/div/input");
