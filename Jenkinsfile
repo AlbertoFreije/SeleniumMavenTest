@@ -9,6 +9,7 @@ pipeline {
         stage('Maven'){
 			
 			steps{
+               sh("pwd")
                sh "mvn clean verify"
                sh "mvn test"
 		    }
