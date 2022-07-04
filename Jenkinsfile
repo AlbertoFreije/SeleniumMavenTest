@@ -10,6 +10,7 @@ pipeline {
 			
 			steps{
                sh "mvn clean verify"
+               sh "mvn test"
 		    }
 		}	
     }
