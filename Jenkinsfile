@@ -12,4 +12,5 @@ pipeline {
                sh "mvn clean verify"
 		    }
 		}	
+    }
 }
