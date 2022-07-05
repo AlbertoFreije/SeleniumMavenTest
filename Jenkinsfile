@@ -1,3 +1,5 @@
 node("jenkinsSelenium"){
 
+    sh("pwd")
+
 }
