@@ -1,3 +1,3 @@
-node("jmeter"){
+node("selenium-chrome"){
 
 }
