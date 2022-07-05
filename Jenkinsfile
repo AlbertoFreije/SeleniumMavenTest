@@ -1,5 +1,6 @@
 node("jenkinsSelenium"){
 
-    sh("pwd")
-
+    stage('Clone repository') {
+        checkout scm
+    }
 }
