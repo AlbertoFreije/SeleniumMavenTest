@@ -1,3 +1,3 @@
-node("selenium-chrome"){
+node("jenkinsSelenium"){
 
 }
