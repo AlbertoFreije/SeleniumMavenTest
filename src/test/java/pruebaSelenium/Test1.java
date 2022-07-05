@@ -68,6 +68,7 @@ public class Test1 {
 	public void conectarPagina() {
 		
 		 System.setProperty("webdriver.chrome.driver","/var/jenkins_home/workspace/Selenium-Zap/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
 		 driver = new ChromeDriver();
 		 String expectedTitle = "Welcome to the Simple Travel Agency!";
 	     //String actualTitle = "";
