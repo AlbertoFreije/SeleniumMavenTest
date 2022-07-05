@@ -1,6 +1,7 @@
 node("jenkinsSelenium"){
 
     stage('Clone repository') {
-        checkout scm
+        git branch: 'main',
+        url: 'git@github.com:AlbertoFreije/SeleniumMavenTest.git'
     }
 }
