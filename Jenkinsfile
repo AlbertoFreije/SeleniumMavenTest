@@ -5,7 +5,7 @@ node("jenkinsSelenium"){
     }
 
     stage('Charge chrome driver') {
-         sh "mv /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
+         sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
     }
 
     stage('Maven') {
