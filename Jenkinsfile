@@ -111,8 +111,16 @@ node("jenkinsSelenium"){
          sh("mvn clean verify")
     }
 
-    stage('Parse report'){
+    stage("Stash Report"){
+      stash name: 'prueba', includes: '**/zap-report.xml'
+    }
+}
 
+node("jmeter"){
+
+     cleanWs()
+     unstash 'prueba'
+     sh("pwd") 
      def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
      def adocSource = sluper(xmlContent)
        writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
@@ -128,7 +136,5 @@ node("jenkinsSelenium"){
          from: mailFrom,
          to: mailTo
        )
-     
 
-    }
 }
