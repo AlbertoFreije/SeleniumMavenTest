@@ -5,8 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.time.Duration;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -142,7 +141,11 @@ static String URL = "https://blazedemo.com/";
 			String template = "traditional-html";
 			String description = "This is zap security test report";
 			String reportfilename = "zap-report.html";
-			String targetFolder = System.getProperty("user.dir");
+			//windows
+			//String targetFolder = System.getProperty("user.dir");
+			//Linux
+			String targetFolder = "/home/seluser/workspace/Selenium-Zap";
+			
 			
 			try {
 				ApiResponse response = api.reports.generate(title, template, null, description, null, null, null, null, null, reportfilename, null, targetFolder, null);
