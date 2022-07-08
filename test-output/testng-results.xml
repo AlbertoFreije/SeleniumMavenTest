@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-08T11:06:31 CEST" name="Default suite" finished-at="2022-07-08T11:06:47 CEST" duration-ms="16113">
+  <suite started-at="2022-07-08T11:38:35 CEST" name="Default suite" finished-at="2022-07-08T11:38:59 CEST" duration-ms="24103">
     <groups>
     </groups>
-    <test started-at="2022-07-08T11:06:31 CEST" name="Default test" finished-at="2022-07-08T11:06:47 CEST" duration-ms="16113">
-      <class name="pruebaSelenium.Test2Test">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:pruebaSelenium.Test2Test@e15b7e8]" started-at="2022-07-08T11:06:31 CEST" name="setUp" finished-at="2022-07-08T11:06:33 CEST" duration-ms="2535" status="PASS">
+    <test started-at="2022-07-08T11:38:35 CEST" name="Default test" finished-at="2022-07-08T11:38:59 CEST" duration-ms="24103">
+      <class name="pruebaSelenium.Test1Test">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:35 CEST" name="setUp" finished-at="2022-07-08T11:38:38 CEST" duration-ms="3562" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="amazonSecurityTest()[pri:0, instance:pruebaSelenium.Test2Test@e15b7e8]" started-at="2022-07-08T11:06:33 CEST" name="amazonSecurityTest" finished-at="2022-07-08T11:06:46 CEST" duration-ms="12307" status="PASS">
+        <test-method signature="conectarPagina()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:38 CEST" name="conectarPagina" finished-at="2022-07-08T11:38:44 CEST" duration-ms="5468" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- amazonSecurityTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pruebaSelenium.Test2Test@e15b7e8]" started-at="2022-07-08T11:06:46 CEST" name="tearDown" finished-at="2022-07-08T11:06:47 CEST" duration-ms="1232" status="PASS">
+        </test-method> <!-- conectarPagina -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:44 CEST" name="tearDown" finished-at="2022-07-08T11:38:44 CEST" duration-ms="435" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- pruebaSelenium.Test2Test -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:44 CEST" name="setUp" finished-at="2022-07-08T11:38:46 CEST" duration-ms="1434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="findFlights()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:46 CEST" name="findFlights" finished-at="2022-07-08T11:38:59 CEST" duration-ms="12787" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findFlights -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pruebaSelenium.Test1Test@5d0a1059]" started-at="2022-07-08T11:38:59 CEST" name="tearDown" finished-at="2022-07-08T11:38:59 CEST" duration-ms="375" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- pruebaSelenium.Test1Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

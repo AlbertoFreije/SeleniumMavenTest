@@ -1,7 +1,5 @@
 package pruebaSelenium;
 
-
-
 import static org.junit.Assert.assertTrue;
 
 import java.time.Duration;
@@ -9,7 +7,6 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -18,16 +15,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.zaproxy.clientapi.core.ApiResponse;
 import org.zaproxy.clientapi.core.ClientApi;
 import org.zaproxy.clientapi.core.ClientApiException;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
-public class Test1 {
-	
-	static String URL = "https://blazedemo.com/";
+public class Test1Test {
+  
+static String URL = "https://blazedemo.com/";
 	
 	protected static int timeout = 5;
 	
@@ -38,7 +37,7 @@ public class Test1 {
 	private WebDriver driver;
 	private ClientApi api;
 	
-	@Before
+	@BeforeMethod
 	public void setUp() {
 		
 		String proxyServerUrl = ZAP_PROXY_ADDRESS + ":" + ZAP_PROXY_PORT;
@@ -128,13 +127,13 @@ public class Test1 {
 	       
 	}
 	
-	@After
+	@AfterMethod
 	public void tearDown() {
 		if(api != null) {
-			String title = "Amazon ZAP Security Report";
+			String title = "ZAP Security Report";
 			String template = "traditional-html";
-			String description = "This is Amazon zap security test report";
-			String reportfilename = "amazon-zap-report.html";
+			String description = "This is zap security test report";
+			String reportfilename = "zap-report.html";
 			String targetFolder = System.getProperty("user.dir");
 			
 			try {
@@ -147,5 +146,4 @@ public class Test1 {
 		
 		driver.quit();
 	}
-
 }
