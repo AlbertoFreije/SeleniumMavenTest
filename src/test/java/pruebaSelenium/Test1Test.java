@@ -30,9 +30,17 @@ static String URL = "https://blazedemo.com/";
 	
 	protected static int timeout = 5;
 	
-	static final String ZAP_PROXY_ADDRESS = "localhost";
-	static final int ZAP_PROXY_PORT = 8080;
-	static final String ZAP_API_KEY = "pl5btf8p6s2nvvjsgl2kc0umje";
+	//windows
+	//static final String ZAP_PROXY_ADDRESS = "localhost";
+	//Linux
+	static final String ZAP_PROXY_ADDRESS = "192.168.56.10";
+	//Windows
+//	static final int ZAP_PROXY_PORT = 8080;
+//	static final String ZAP_API_KEY = "pl5btf8p6s2nvvjsgl2kc0umje";
+	
+	//Linux
+	static final int ZAP_PROXY_PORT = 8092;
+	static final String ZAP_API_KEY = "change-me-9203935709";
 	
 	private WebDriver driver;
 	private ClientApi api;
