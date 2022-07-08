@@ -4,7 +4,7 @@ def mailBody = "Este es el informe de vulnerabilidades encontradas solicitado"
 def mailSubject = "INFORME VULNERABILIDADES"
 def mailFrom = 'AlbertoFreijeCarballo@gmail.com'
 def mailTo = 'Alberto.Freije@Ricoh.es'
-def nombreXML = "owasp-quick-scan-report.xml"
+def nombreXML = "zap-report.xml"
 
 @NonCPS
 def sluper(xmlData){
@@ -113,8 +113,7 @@ node("jenkinsSelenium"){
 
     stage('Parse report'){
 
-     println("${WORKSPACE}/");
-     //def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+     def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
      
 
     }

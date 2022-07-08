@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+<OWASPZAPReport version="2.11.1" generated="vie, 8 jul 2022 12:39:57">
+	
+		<site name="https://blazedemo.com" host="blazedemo.com" port="443" ssl="true">
+			<alerts>
+				
+					<alertitem>
+						<pluginid>10202</pluginid>
+						<alertRef>10202</alertRef>
+						<alert>Ausencia de fichas (tokens) Anti-CSRF</alert>
+						<name>Ausencia de fichas (tokens) Anti-CSRF</name>
+						<riskcode>2</riskcode>
+						<confidence>1</confidence>
+						<riskdesc>Medio (Bajo)</riskdesc>
+						<confidencedesc>Bajo</confidencedesc>
+						<desc>&lt;p&gt;No se encontraron fichas (tokens) Anti-CSRF en un formulario HTML.&lt;/p&gt;&lt;p&gt;Una solicutud falsa entre sitios en un ataque que compromete y obliga a una v&#xed;ctima a enviar su solicitud HTTP a un destino objetivo sin su conocimiento o intenci&#xf3;n para poder realizar una acci&#xf3;n como v&#xed;ctima. La causa oculta es la funcionalidad de la aplicaci&#xf3;n utilizando acciones de URL/formulario que pueden ser adivinados de forma repetible. La naturaleza del ataque es que CSRG explota la confianza que un sitio web proporciona a un usuario. Por el contrario, las cadenas de comandos de los sitios cruzados (XSS) explotan la confianza que un usuario proporciona en un sitio web. Al igual que XSS, los ataques CSRG no son de forma necesaria de sitios cruzados, pero hay la posibilidad de que si pueden serlo. La falsificaci&#xf3;n de las solicitudes ente los sitios tambi&#xe9;n se conoce como CSRF, XSRG, ataques con un solo clic, montaje de sesi&#xf3;n, diputado confundido y navegaci&#xf3;n en alta mar.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Los ataques de CSRG son muy efectivos en varias situaciones, que incluyen:&lt;/p&gt;&lt;p&gt;*La victima tiene una sesi&#xf3;n activa en el sitio de destino.&lt;/p&gt;&lt;p&gt;    *La v&#xed;ctima se autoriza por medio de la autenticaci&#xf3;n HTTP en el sitio de destino.&lt;/p&gt;&lt;p&gt;    *La v&#xed;ctima se encuentra en la misma red local que el sitio de destino.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;CSRF se ha utilizado especialmente para poder realizar una acci&#xf3;n contra un sitio objetivo utilizando los privilegios de la v&#xed;ctima, pero se han revelado t&#xe9;cnicas recientes para difundir informaci&#xf3;n al obtener el acceso a la respuesta. El riesgo de divulgaci&#xf3;n de informaci&#xf3;n aumenta de forma dr&#xe1;stica cuando el sitio de destino se encuentra vulnerable a XSS, porque XSS se puede utilizar como una plataforma para CSRF, lo que le permite al atacante que opere desde adentro de los l&#xed;ites de la misma pol&#xed;tica de origen.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form action=&quot;reserve.php&quot; method=&quot;post&quot;&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form name=&quot;VA43&quot; method=&quot;post&quot; action=&quot;purchase.php&quot;&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form name=&quot;UA234&quot; method=&quot;post&quot; action=&quot;purchase.php&quot;&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form name=&quot;AL969&quot; method=&quot;post&quot; action=&quot;purchase.php&quot;&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form name=&quot;VA12&quot; method=&quot;post&quot; action=&quot;purchase.php&quot;&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;form name=&quot;L4346&quot; method=&quot;post&quot; action=&quot;purchase.php&quot;&gt;</evidence>
+								</instance>
+							
+						</instances>
+						<count>6</count>
+						<solution>&lt;p&gt;Frase: Arquitectura y Dise&#xf1;o&lt;/p&gt;&lt;p&gt;Utilice una biblioteca o marco comprobado que no acepte que ocura esta debilidad o que proporcione construcciones que permitan que esta debilidad sea mas sencilla de evitar.&lt;/p&gt;&lt;p&gt;Por ejemplo, utilice el paquete anti-CSRG como el CSRGuard de OWASP.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Fase: Implementaci&#xf3;n&lt;/p&gt;&lt;p&gt;Aseg&#xfa;rese de que su aplicaci&#xf3;n est&#xe9; libre de fallas de secuencias de comandos entre sitios, ya que la mayor&#xed;a de las defensas de CSRF pueden detenerse por alto por medio del uso de secuencias de comandos manejadas por el atacante.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Fase: Arquitectura y Dise&#xf1;o&lt;/p&gt;&lt;p&gt;Origina un nonce &#xfa;nico para cada uno de los formularios, coloque el nonce en el formularo y confirme la independencia al obtener el formulario. Aseg&#xfa;rese de que el nonce no sea predecible (CWE-330).&lt;/p&gt;&lt;p&gt;Usted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Identificar las operaciones que sean especialmente peligrosas. Cuando el usuario desarrolla una operaci&#xf3;n peligrosa, env&#xed;e una solicitud de confirmaci&#xf3;n de forma separada para poder garantizar que el usuario tenga la intenci&#xf3;n de desarrollar esa operaci&#xf3;n.&lt;/p&gt;&lt;p&gt;Usted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Utilice el control de gesti&#xf3;n de la sesi&#xf3;n de ESAPI.&lt;/p&gt;&lt;p&gt;Este control introduce un elemento para CSRF.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;No utilice el m&#xe9;todo GET para ninguna de las solicitudes que puedan desencadenar un cambio de estado.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Fase: Implementaci&#xf3;n&lt;/p&gt;&lt;p&gt;Revise que la solicitud se cre&#xf3; en la p&#xe1;gina esperada. Esto podr&#xed;a quebrar la funcionalidad aut&#xe9;ntica, ya que los usuarios o los representantes puede ser que hayan desactivado el env&#xed;o de Referer por motivos de privacidad.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;Ninguna ficha (token) Anti-CSRF [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] fue encontrada en los siguientes formularios HTML: [Form 1: &quot;&quot; ].  &lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;http://projects.webappsec.org/Cross-Site-Request-Forgery&lt;/p&gt;&lt;p&gt;http://cwe.mitre.org/data/definitions/352.html&lt;/p&gt;</reference>
+						<cweid>352</cweid>
+						<wascid>9</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10038</pluginid>
+						<alertRef>10038</alertRef>
+						<alert>Content Security Policy (CSP) Header Not Set</alert>
+						<name>Content Security Policy (CSP) Header Not Set</name>
+						<riskcode>2</riskcode>
+						<confidence>3</confidence>
+						<riskdesc>Medio (Alto)</riskdesc>
+						<confidencedesc>Alto</confidencedesc>
+						<desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page &#x2014; covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: &quot;Content-Security-Policy&quot; for Chrome 25+, Firefox 23+ and Safari 7+, &quot;X-Content-Security-Policy&quot; for Firefox 4.0+ and Internet Explorer 10+, and &quot;X-WebKit-CSP&quot; for Chrome 14+ and Safari 6+.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;http://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html&lt;/p&gt;&lt;p&gt;http://www.html5rocks.com/en/tutorials/security/content-security-policy/&lt;/p&gt;&lt;p&gt;http://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;http://content-security-policy.com/&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10020</pluginid>
+						<alertRef>10020-1</alertRef>
+						<alert>Missing Anti-clickjacking Header</alert>
+						<name>Missing Anti-clickjacking Header</name>
+						<riskcode>2</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Medio (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;The response does not include either Content-Security-Policy with &apos;frame-ancestors&apos; directive or X-Frame-Options to protect against &apos;ClickJacking&apos; attacks.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param>X-Frame-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param>X-Frame-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.&lt;/p&gt;&lt;p&gt;If you expect the page to be framed only by pages on your server (e.g. it&apos;s part of a FRAMESET) then you&apos;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy&apos;s &quot;frame-ancestors&quot; directive.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options&lt;/p&gt;</reference>
+						<cweid>1021</cweid>
+						<wascid>15</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10040</pluginid>
+						<alertRef>10040</alertRef>
+						<alert>Secure Pages Include Mixed Content (Including Scripts)</alert>
+						<name>Secure Pages Include Mixed Content (Including Scripts)</name>
+						<riskcode>2</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Medio (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;The page includes mixed content, that is content accessed via HTTP instead of HTTPS.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js</evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;A page that is available over SSL/TLS must be comprised completely of content which is transmitted over SSL/TLS.&lt;/p&gt;&lt;p&gt;The page must not contain any content that is transmitted over unencrypted HTTP.&lt;/p&gt;&lt;p&gt; This includes content from third party sites.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;tag=script src=http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html&lt;/p&gt;</reference>
+						<cweid>311</cweid>
+						<wascid>4</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10017</pluginid>
+						<alertRef>10017</alertRef>
+						<alert>Cross-Domain JavaScript Source File Inclusion</alert>
+						<name>Cross-Domain JavaScript Source File Inclusion</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Bajo (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;The page includes one or more script files from a third-party domain.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param>http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js</param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param>http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js</param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;</evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;Ensure JavaScript source files are loaded from only trusted sources, and the sources can&apos;t be controlled by end users of the application.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference></reference>
+						<cweid>829</cweid>
+						<wascid>15</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10096</pluginid>
+						<alertRef>10096</alertRef>
+						<alert>Divulgaci&#xf3;n de la marca de hora - Unix</alert>
+						<name>Divulgaci&#xf3;n de la marca de hora - Unix</name>
+						<riskcode>1</riskcode>
+						<confidence>1</confidence>
+						<riskdesc>Bajo (Bajo)</riskdesc>
+						<confidencedesc>Bajo</confidencedesc>
+						<desc>&lt;p&gt;Una marca de tiempo ha sido divulgada por el servidor de la aplicaci&#xf3;n/el navegador - Unix&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap-table.css</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>428571429</evidence>
+								</instance>
+							
+						</instances>
+						<count>1</count>
+						<solution>&lt;p&gt;Confirmar manualmente que los datos de marca de hora no son sensibles, y que los datos no pueden ser agregados a patrones explotables de divulgaci&#xf3;n.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;428571429, que eval&#xfa;a a: 1983-08-01 09:37:09&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;http://projects.webappsec.org/w/page/13246936/Information%20Leakage&lt;/p&gt;</reference>
+						<cweid>200</cweid>
+						<wascid>13</wascid>
+						<sourceid>8</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10037</pluginid>
+						<alertRef>10037</alertRef>
+						<alert>El servidor divulga informaci&#xf3;n mediante un campo(s) de encabezado de respuesta HTTP &apos;&apos;&apos;&apos;X-Powered-By&apos;&apos;&apos;&apos;</alert>
+						<name>El servidor divulga informaci&#xf3;n mediante un campo(s) de encabezado de respuesta HTTP &apos;&apos;&apos;&apos;X-Powered-By&apos;&apos;&apos;&apos;</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Bajo (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;El servidor de la web/aplicaci&#xf3;n est&#xe1; divulgando informaci&#xf3;n mediante uno o m&#xe1;s encabezados de respuesta HTTP &apos;&apos;&apos;&apos;X-Powered-By&apos;&apos;&apos;&apos;. El acceso a tal informaci&#xf3;n podr&#xed;a facilitarle a los atacantes la identificaci&#xf3;n de otros marcos/componentes de los que su aplicaci&#xf3;n web depende y las vulnerabilidades a las que pueden estar sujetos tales componentes.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>x-powered-by: PHP/7.3.17</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>x-powered-by: PHP/7.3.17</evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;Aseg&#xfa;rese que su servidor web, servidor de aplicaci&#xf3;n, equilibrador de carga, etc. est&#xe1; configurado para suprimir encabezados &apos;&apos;&apos;&apos;X-Powered-By&quot;.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;http://blogs.msdn.com/b/varunm/Archive/2013/04/23/Remove-Unwanted-http-Response-headers.aspx http://www.troyhunt.com/2012/02/shhh-don &apos; t-deje-la-respuesta-headers.html&lt;/p&gt;</reference>
+						<cweid>200</cweid>
+						<wascid>13</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10021</pluginid>
+						<alertRef>10021</alertRef>
+						<alert>X-Content-Type-Options Header Missing</alert>
+						<name>X-Content-Type-Options Header Missing</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Bajo (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap-table.css</uri>
+									<method>GET</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap-table.js</uri>
+									<method>GET</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap.min.css</uri>
+									<method>GET</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap.min.js</uri>
+									<method>GET</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param>X-Content-Type-Options</param>
+									<attack></attack>
+									<evidence></evidence>
+								</instance>
+							
+						</instances>
+						<count>6</count>
+						<solution>&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.&lt;/p&gt;&lt;p&gt;At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;&lt;p&gt;https://owasp.org/www-community/Security_Headers&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10027</pluginid>
+						<alertRef>10027</alertRef>
+						<alert>Divulgaci&#xf3;n de informaci&#xf3;n - Comentarios sospechosos</alert>
+						<name>Divulgaci&#xf3;n de informaci&#xf3;n - Comentarios sospechosos</name>
+						<riskcode>0</riskcode>
+						<confidence>1</confidence>
+						<riskdesc>Informativo (Bajo)</riskdesc>
+						<confidencedesc>Bajo</confidencedesc>
+						<desc>&lt;p&gt;The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap-table.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>bug</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap-table.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>from</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/assets/bootstrap.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>query</evidence>
+								</instance>
+							
+						</instances>
+						<count>3</count>
+						<solution>&lt;p&gt;Eliminar todos los comentarios que devuelvan informaci&#xf3;n que podr&#xed;a ayudar a un atacante y arreglar cualquier problema subyacente al que se refieran.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;The following pattern was used: \bBUG\b and was detected 2 times, the first in the element starting with: &quot;        // fix #61: the hidden table reset header bug.&quot;, see evidence field for the suspicious comment/snippet.&lt;/p&gt;</otherinfo>
+						<reference></reference>
+						<cweid>200</cweid>
+						<wascid>13</wascid>
+						<sourceid>7</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10015</pluginid>
+						<alertRef>10015</alertRef>
+						<alert>Re-examine Cache-control Directives</alert>
+						<name>Re-examine Cache-control Directives</name>
+						<riskcode>0</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Informativo (Medio)</riskdesc>
+						<confidencedesc>Medio</confidencedesc>
+						<desc>&lt;p&gt;The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>https://blazedemo.com/</uri>
+									<method>GET</method>
+									<param>Cache-Control</param>
+									<attack></attack>
+									<evidence>no-cache, private</evidence>
+								</instance>
+							
+							
+								<instance>
+									<uri>https://blazedemo.com/reserve.php</uri>
+									<method>POST</method>
+									<param>Cache-Control</param>
+									<attack></attack>
+									<evidence>no-cache, private</evidence>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;For secure content, ensure the cache-control HTTP header is set with &quot;no-cache, no-store, must-revalidate&quot;. If an asset should be cached consider setting the directives &quot;public, max-age, immutable&quot;.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching&lt;/p&gt;&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control&lt;/p&gt;</reference>
+						<cweid>525</cweid>
+						<wascid>13</wascid>
+						<sourceid>3</sourceid>
+					</alertitem>
+				
+			</alerts>
+		</site>
+	
+	
+		<site name="https://accounts.google.com" host="accounts.google.com" port="443" ssl="true">
+			<alerts>
+				
+			</alerts>
+		</site>
+	
+</OWASPZAPReport>

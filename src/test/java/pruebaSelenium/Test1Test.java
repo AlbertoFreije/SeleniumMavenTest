@@ -28,16 +28,14 @@ public class Test1Test {
 static String URL = "https://blazedemo.com/";
 	
 	protected static int timeout = 5;
-	
+
 	//windows
-	//static final String ZAP_PROXY_ADDRESS = "localhost";
-	//Linux
-	static final String ZAP_PROXY_ADDRESS = "192.168.56.10";
-	//Windows
+//	static final String ZAP_PROXY_ADDRESS = "localhost";
 //	static final int ZAP_PROXY_PORT = 8080;
 //	static final String ZAP_API_KEY = "pl5btf8p6s2nvvjsgl2kc0umje";
 	
 	//Linux
+	static final String ZAP_PROXY_ADDRESS = "192.168.56.10";
 	static final int ZAP_PROXY_PORT = 8092;
 	static final String ZAP_API_KEY = "change-me-9203935709";
 	
@@ -138,9 +136,9 @@ static String URL = "https://blazedemo.com/";
 	public void tearDown() {
 		if(api != null) {
 			String title = "ZAP Security Report";
-			String template = "traditional-html";
+			String template = "traditional-xml";
 			String description = "This is zap security test report";
-			String reportfilename = "zap-report.html";
+			String reportfilename = "zap-report.xml";
 			//windows
 			//String targetFolder = System.getProperty("user.dir");
 			//Linux
