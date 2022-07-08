@@ -114,6 +114,20 @@ node("jenkinsSelenium"){
     stage('Parse report'){
 
      def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+     def adocSource = sluper(xmlContent)
+       writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
+       sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
+       sh("unzip main.zip")
+       sh("ls -la")
+       sh("pwd")
+       sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
+       emailext (
+         attachmentsPattern: '**/informeAlertas.pdf',
+         subject: mailSubject,
+         body: mailBody,
+         from: mailFrom,
+         to: mailTo
+       )
      
 
     }
