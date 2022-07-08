@@ -12,10 +12,28 @@
       	 <artifactId>selenium-java</artifactId>
          <version>4.3.0</version>
 	</dependency>
-	   	 <dependency>
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.0.3</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+	<dependency>
 		<groupId>org.apache.poi</groupId>
 		<artifactId>poi</artifactId>
 		<version>3.17</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.testng</groupId>
+    	<artifactId>testng</artifactId>
+    	<version>7.6.1</version>
+    	<scope>test</scope>
 	</dependency>
 	
 	<dependency>
@@ -23,6 +41,12 @@
 	  <artifactId>junit-dep</artifactId>
 	  <version>4.8.2</version>
 	  <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.zaproxy</groupId>  
+    	<artifactId>zap-clientapi</artifactId>
+    	<version>1.10.0</version>
     </dependency>
 	
 	<dependency>

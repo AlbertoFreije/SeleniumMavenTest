@@ -7,22 +7,55 @@ import static org.junit.Assert.assertTrue;
 import java.time.Duration;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.zaproxy.clientapi.core.ApiResponse;
+import org.zaproxy.clientapi.core.ClientApi;
+import org.zaproxy.clientapi.core.ClientApiException;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class Test1 {
-	
-	private WebDriver driver;
 	
 	static String URL = "https://blazedemo.com/";
 	
 	protected static int timeout = 5;
 	
+	static final String ZAP_PROXY_ADDRESS = "localhost";
+	static final int ZAP_PROXY_PORT = 8080;
+	static final String ZAP_API_KEY = "pl5btf8p6s2nvvjsgl2kc0umje";
+	
+	private WebDriver driver;
+	private ClientApi api;
+	
+	@Before
+	public void setUp() {
+		
+		String proxyServerUrl = ZAP_PROXY_ADDRESS + ":" + ZAP_PROXY_PORT;
+		Proxy proxy = new Proxy();
+		proxy.setHttpProxy(proxyServerUrl);
+		proxy.setSslProxy(proxyServerUrl);
+		
+		ChromeOptions co = new ChromeOptions();
+		co.setProxy(proxy);
+		co.setAcceptInsecureCerts(true);
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver(co);
+		
+		api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
+		
+	}
+
 	public static int getTimeout() {
 		return timeout;
 	}
@@ -67,16 +100,16 @@ public class Test1 {
 	@Test 
 	public void conectarPagina() {
 		
-		 System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
-		//System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-		 driver = new ChromeDriver();
+		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+		 System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
+		 //driver = new ChromeDriver();
 		 String expectedTitle = "Welcome to the Simple Travel Agency!";
 	     //String actualTitle = "";
-		 driver.navigate().to(URL);
-	     //driver.get(URL);
+		 //driver.navigate().to(URL);
+	     driver.get(URL);
 	     //actualTitle = driver.getTitle();
 	     textoPresentePagina(driver, expectedTitle);
-	     driver.quit();
+	    
 	       
 	}
 	
@@ -84,15 +117,35 @@ public class Test1 {
 	public void findFlights() {
 		
 		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-		 System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
-		 driver = new ChromeDriver();
+		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+		 //driver = new ChromeDriver();
 		 driver.navigate().to(URL);
 		 List<WebElement> elementos = checkElement(driver, "free","/html/body/div[3]/form/div/input");
 		 elementos.get(0).click();
 		 String expectedTitle = "Flights from Paris to Buenos Aires:";
 		 textoPresentePagina(driver, expectedTitle);
-	     driver.quit();
+	 
 	       
+	}
+	
+	@After
+	public void tearDown() {
+		if(api != null) {
+			String title = "Amazon ZAP Security Report";
+			String template = "traditional-html";
+			String description = "This is Amazon zap security test report";
+			String reportfilename = "amazon-zap-report.html";
+			String targetFolder = System.getProperty("user.dir");
+			
+			try {
+				ApiResponse response = api.reports.generate(title, template, null, description, null, null, null, null, null, reportfilename, null, targetFolder, null);
+				System.out.println("ZAP report generated at this location" + response.toString());
+			} catch (ClientApiException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		driver.quit();
 	}
 
 }
