@@ -3,7 +3,7 @@ import static groovy.json.JsonOutput.*
 def mailBody = "Este es el informe de vulnerabilidades encontradas solicitado"
 def mailSubject = "INFORME VULNERABILIDADES"
 def mailFrom = 'AlbertoFreijeCarballo@gmail.com'
-def mailTo = 'Alberto.Freije@Ricoh.es'
+def mailTo = 'Alberto.Nunez@Ricoh.es'
 def nombreXML = "zap-report.xml"
 
 @NonCPS
