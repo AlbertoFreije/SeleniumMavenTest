@@ -117,7 +117,6 @@ node("jenkinsSelenium"){
       def adocSource = sluper(xmlContent)
        writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
        sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
-       sh("rm -r templates-main/")
        sh("unzip main.zip")
        sh("ls -la")
        sh("pwd")
