@@ -113,6 +113,7 @@ node("jenkinsSelenium"){
 
     stage("Generate Report"){
 
+      cleanWs()
       def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
       def adocSource = sluper(xmlContent)
        writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
