@@ -17,7 +17,7 @@ def sluper(xmlData){
     adocSource += ":doctype: book\n"
     adocSource += ":hardbreaks:\n"
     adocSource += ":experimental:\n"
-    adocSource += ":pdf-stylesdir: /tmp/workspace/pruebaNodo/templates-main/Ricoh \n"
+    adocSource += ":pdf-stylesdir: /home/seluser/workspace/Selenium-Zap/templates-main/Ricoh \n"
     adocSource += ":pdf-style: template.yml \n"
     adocSource += ":Ruta_Base: ..\\ \n"
     adocSource += ":imagesdir: .\\ \n"
