@@ -114,10 +114,10 @@ node("jenkinsSelenium"){
     stage("Generate Report"){
 
       def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+      cleanWs()
       def adocSource = sluper(xmlContent)
        writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
        sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
-       cleanWs()
        sh("unzip main.zip")
        sh("ls -la")
        sh("pwd")
