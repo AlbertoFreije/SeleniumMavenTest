@@ -7,25 +7,20 @@ import java.util.List;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.zaproxy.clientapi.core.ApiResponse;
-import org.zaproxy.clientapi.core.ClientApi;
-import org.zaproxy.clientapi.core.ClientApiException;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Test1Test {
   
-static String URL = "https://blazedemo.com/";
+    static String URL = "https://blazedemo.com/";
 	
 	protected static int timeout = 5;
 
@@ -35,28 +30,31 @@ static String URL = "https://blazedemo.com/";
 //	static final String ZAP_API_KEY = "pl5btf8p6s2nvvjsgl2kc0umje";
 	
 	//Linux
-	static final String ZAP_PROXY_ADDRESS = "192.168.56.10";
-	static final int ZAP_PROXY_PORT = 8092;
-	static final String ZAP_API_KEY = "change-me-9203935709";
+//	static final String ZAP_PROXY_ADDRESS = "192.168.56.10";
+//	static final int ZAP_PROXY_PORT = 8092;
+//	static final String ZAP_API_KEY = "change-me-9203935709";
 	
 	private WebDriver driver;
-	private ClientApi api;
+//	private ClientApi api;
 	
 	@BeforeMethod
 	public void setUp() {
 		
-		String proxyServerUrl = ZAP_PROXY_ADDRESS + ":" + ZAP_PROXY_PORT;
-		Proxy proxy = new Proxy();
-		proxy.setHttpProxy(proxyServerUrl);
-		proxy.setSslProxy(proxyServerUrl);
+//		String proxyServerUrl = ZAP_PROXY_ADDRESS + ":" + ZAP_PROXY_PORT;
+//		Proxy proxy = new Proxy();
+//		proxy.setHttpProxy(proxyServerUrl);
+//		proxy.setSslProxy(proxyServerUrl);
+//		
+//		ChromeOptions co = new ChromeOptions();
+//		co.setProxy(proxy);
+//		co.setAcceptInsecureCerts(true);
+//		WebDriverManager.chromedriver().setup();
+//		driver = new ChromeDriver(co);
+//		
+//		api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
 		
-		ChromeOptions co = new ChromeOptions();
-		co.setProxy(proxy);
-		co.setAcceptInsecureCerts(true);
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver(co);
-		
-		api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
+		driver = new ChromeDriver();
 		
 	}
 
@@ -134,24 +132,24 @@ static String URL = "https://blazedemo.com/";
 	
 	@AfterMethod
 	public void tearDown() {
-		if(api != null) {
-			String title = "ZAP Security Report";
-			String template = "traditional-xml";
-			String description = "This is zap security test report";
-			String reportfilename = "zap-report.xml";
-			//windows
-			//String targetFolder = System.getProperty("user.dir");
-			//Linux
-			String targetFolder = "/home/seluser/workspace/Selenium-Zap";
-			
-			
-			try {
-				ApiResponse response = api.reports.generate(title, template, null, description, null, null, null, null, null, reportfilename, null, targetFolder, null);
-				System.out.println("ZAP report generated at this location" + response.toString());
-			} catch (ClientApiException e) {
-				e.printStackTrace();
-			}
-		}
+//		if(api != null) {
+//			String title = "ZAP Security Report";
+//			String template = "traditional-xml";
+//			String description = "This is zap security test report";
+//			String reportfilename = "zap-report.xml";
+//			//windows
+//			//String targetFolder = System.getProperty("user.dir");
+//			//Linux
+//			String targetFolder = "/home/seluser/workspace/Selenium-Zap";
+//			
+//			
+//			try {
+//				ApiResponse response = api.reports.generate(title, template, null, description, null, null, null, null, null, reportfilename, null, targetFolder, null);
+//				System.out.println("ZAP report generated at this location" + response.toString());
+//			} catch (ClientApiException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
 		driver.quit();
 	}
