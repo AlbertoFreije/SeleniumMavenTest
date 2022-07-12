@@ -132,3 +132,9 @@ node("jenkinsSelenium"){
     // }
 
 }
+
+node("jenkinszap"){
+        stage('Generacion Informe') {
+            sh("pwd")
+        }
+    }
