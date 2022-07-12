@@ -111,24 +111,24 @@ node("jenkinsSelenium"){
          sh("mvn clean verify")
     }
 
-    stage("Generate Report"){
+    // stage("Generate Report"){
 
-      def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
-      cleanWs()
-      def adocSource = sluper(xmlContent)
-       writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
-       sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
-       sh("unzip main.zip")
-       sh("ls -la")
-       sh("pwd")
-       sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
-       emailext (
-         attachmentsPattern: '**/informeAlertas.pdf',
-         subject: mailSubject,
-         body: mailBody,
-         from: mailFrom,
-         to: mailTo
-       )
-    }
+    //   def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+    //   cleanWs()
+    //   def adocSource = sluper(xmlContent)
+    //    writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
+    //    sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
+    //    sh("unzip main.zip")
+    //    sh("ls -la")
+    //    sh("pwd")
+    //    sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
+    //    emailext (
+    //      attachmentsPattern: '**/informeAlertas.pdf',
+    //      subject: mailSubject,
+    //      body: mailBody,
+    //      from: mailFrom,
+    //      to: mailTo
+    //    )
+    // }
 
 }
