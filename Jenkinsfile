@@ -108,7 +108,7 @@ node("jenkinsSelenium"){
     }
 
     stage('Maven') {
-         sh("mvn clean verify -Dhttp.proxyHost=192.168.56.10 -Dhttp.proxyPort=8092 -Dhttps.proxyHost=192.168.56.10 -Dhttps.proxyPort=8092")
+         sh("mvn clean verify")
     }
 
     // stage("Generate Report"){
