@@ -54,9 +54,9 @@ public class Test1Test {
 //		
 //		api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
 		
-//		WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+//		System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
 		driver = new ChromeDriver(co);
 		
 	}
