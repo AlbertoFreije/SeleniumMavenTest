@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -45,9 +46,9 @@ public class Test1Test {
 //		proxy.setHttpProxy(proxyServerUrl);
 //		proxy.setSslProxy(proxyServerUrl);
 //		
-//		ChromeOptions co = new ChromeOptions();
+		ChromeOptions co = new ChromeOptions();
 //		co.setProxy(proxy);
-//		co.setAcceptInsecureCerts(true);
+		co.setAcceptInsecureCerts(true);
 //		WebDriverManager.chromedriver().setup();
 //		driver = new ChromeDriver(co);
 //		
