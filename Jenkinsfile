@@ -136,5 +136,6 @@ node("jenkinsSelenium"){
 node("jenkinszap"){
         stage('Generacion Informe') {
             sh("pwd")
+            sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/pruebaNodo/owasp-quick-scan-report.xml --output-format xml")
         }
     }
