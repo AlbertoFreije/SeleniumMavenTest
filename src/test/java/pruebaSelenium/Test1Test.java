@@ -50,14 +50,14 @@ public class Test1Test {
 //		co.setProxy(proxy);
 		co.setAcceptInsecureCerts(true);
 //		WebDriverManager.chromedriver().setup();
-//		driver = new ChromeDriver(co);
+//		driver = new ChromeDriver();
 //		
 //		api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
 		
 //		WebDriverManager.chromedriver().setup();
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(co);
 		
 	}
 
