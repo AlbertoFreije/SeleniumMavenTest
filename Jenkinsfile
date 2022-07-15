@@ -123,11 +123,6 @@ node("jenkinszap"){
            stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
         }
 
-        stage('Restart session'){
-
-          sh("kill -15 11")
-
-        }
 }
 
   node("jenkinsSelenium"){
