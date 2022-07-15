@@ -125,7 +125,7 @@ node("jenkinszap"){
 
         stage("Close Session"){
 
-          sh("pKill java")
+          sh("pkill java")
 
         }
 
