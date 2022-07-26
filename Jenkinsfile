@@ -127,7 +127,7 @@ node("jenkinszap"){
 
 node("selenium-chrome"){
 
-  
+  sh("pwd")
 
 }
 
