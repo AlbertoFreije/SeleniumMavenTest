@@ -125,6 +125,12 @@ node("jenkinszap"){
 
 }
 
+node("selenium-chrome"){
+
+  
+
+}
+
   node("jenkinsSelenium"){
 
      cleanWs()
