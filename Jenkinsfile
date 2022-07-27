@@ -125,11 +125,8 @@ node("jenkinszap"){
 
 }
 
-node("selenium-chrome"){
-
-  sh("pwd")
-  println("COMPRUEBA SI CONECTA")
-
+node("zap"){
+  
 }
 
   node("jenkinsSelenium"){
