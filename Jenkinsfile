@@ -125,7 +125,7 @@ node("jenkinsSelenium"){
 
 // }
 
-node("zap"){
+node("zapAgent"){
 
           stage('Generacion Informe') {
 
