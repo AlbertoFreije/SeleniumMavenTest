@@ -113,6 +113,7 @@ node("jenkinsSelenium"){
 }
 
 node("jenkinszap"){
+
         stage('Generacion Informe') {
             sh("pwd")
             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
@@ -124,19 +125,6 @@ node("jenkinszap"){
         }
 
 }
-
-// node("zapAgent"){
-
-//           stage('Generacion Informe') {
-//             sh("pwd")
-//             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
-            
-//         }
-
-//          stage('Build') {
-//            stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
-//         }
-// }
 
   node("jenkinsSelenium"){
 
