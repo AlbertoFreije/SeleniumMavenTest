@@ -154,3 +154,7 @@ node("jenkinszap"){
        )
 
   }
+
+  node("zapAgent"){
+    sh("pwd")
+  }
