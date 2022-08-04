@@ -99,6 +99,14 @@ pipeline{
     agent none
     stages{
         stage("Test"){
+            stage("Test On zap"){
+                    agent{
+                        label "zap"                    
+                    }
+                    steps{
+                        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+                    }
+                }
             parallel{
                 stage("Test On zap"){
                     agent{
