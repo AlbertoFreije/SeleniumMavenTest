@@ -126,7 +126,7 @@ node("jenkinsSelenium"){
 
 // }
 
-node("zapAgent"){
+node("zap"){
 
 
         sh("ls")

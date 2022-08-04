@@ -137,24 +137,6 @@ public class Test1Test {
 	
 	@AfterMethod
 	public void tearDown() {
-//		if(api != null) {
-//			String title = "ZAP Security Report";
-//			String template = "traditional-xml";
-//			String description = "This is zap security test report";
-//			String reportfilename = "zap-report.xml";
-//			//windows
-//			//String targetFolder = System.getProperty("user.dir");
-//			//Linux
-//			String targetFolder = "/home/seluser/workspace/Selenium-Zap";
-//			
-//			
-//			try {
-//				ApiResponse response = api.reports.generate(title, template, null, description, null, null, null, null, null, reportfilename, null, targetFolder, null);
-//				System.out.println("ZAP report generated at this location" + response.toString());
-//			} catch (ClientApiException e) {
-//				e.printStackTrace();
-//			}
-//		}
 		
 		driver.quit();
 	}
