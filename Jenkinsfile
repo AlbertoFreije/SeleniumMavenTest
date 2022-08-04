@@ -107,30 +107,30 @@ pipeline{
                         def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
                     }
                 }
-            parallel{
-                stage("Test On zap"){
-                    agent{
-                        label "zap"                    
-                    }
-                    steps{
-                        sh("ls")
-                    }
-                }
-                stage('Test on JenkinsSelenium') {
-                    agent {
-                        label "jenkinsSelenium"
-                    }
-                    steps {
-                        sh("pwd") 
-                        checkout scm
-                        sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-                        sleep(60) 
-                        sh("mvn clean verify")
+            // parallel{
+            //     stage("Test On zap"){
+            //         agent{
+            //             label "zap"                    
+            //         }
+            //         steps{
+            //             sh("ls")
+            //         }
+            //     }
+            //     stage('Test on JenkinsSelenium') {
+            //         agent {
+            //             label "jenkinsSelenium"
+            //         }
+            //         steps {
+            //             sh("pwd") 
+            //             checkout scm
+            //             sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
+            //             sleep(60) 
+            //             sh("mvn clean verify")
                         
-                    }
-                }
+            //         }
+            //     }
 
-            }
+            // }
         }
     }
 }
