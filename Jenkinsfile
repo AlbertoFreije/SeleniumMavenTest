@@ -95,48 +95,76 @@ def sluper(xmlData){
     
 }
 
-stages {
-        stage("Parallel") {
-            parallel {
-
-                node("zap"){
-
-                def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-                sh("ls")
-
-                // stage('Generacion Informe') {
-                //     sh("pwd")
-                //     sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
-                    
-                // }
-
-                //  stage('Build') {
-                //    stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
-                // }
-
-            }
-
-            node("jenkinsSelenium"){
-
-
-                stage('Clone repositories') {
-                    checkout scm
+pipeline{
+    agent none
+    stages{
+        stage("Test"){
+            parallel{
+                stage("Test On master"){
+                    agent{
+                        label "zap"                    
+                    }
+                    steps{
+                        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+                    }
+                }
+                stage('Test on JenkinsSelenium') {
+                    agent {
+                        label "jenkinsSelenium"
+                    }
+                    steps {
+                        sh("pwd") 
+                        sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
+                    }
                 }
 
-                stage('Charge chrome driver') {
-                    sh("pwd") 
-                    sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-                }
-
-                // stage('Maven') {
-                //     sh("mvn clean verify")
-                // }
-
-        }
-                
             }
         }
     }
+}
+
+// stages {
+//         stage("Parallel") {
+//             parallel {
+
+//                 node("zap"){
+
+//                 def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+//                 sh("ls")
+
+//                 // stage('Generacion Informe') {
+//                 //     sh("pwd")
+//                 //     sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
+                    
+//                 // }
+
+//                 //  stage('Build') {
+//                 //    stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
+//                 // }
+
+//             }
+
+//             node("jenkinsSelenium"){
+
+
+//                 stage('Clone repositories') {
+//                     checkout scm
+//                 }
+
+//                 stage('Charge chrome driver') {
+//                     sh("pwd") 
+//                     sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
+//                 }
+
+//                 // stage('Maven') {
+//                 //     sh("mvn clean verify")
+//                 // }
+
+//         }
+                
+//             }
+//         }
+//     }
 
 
 // node("jenkinszap"){
