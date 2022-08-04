@@ -96,7 +96,7 @@ def sluper(xmlData){
 }
 
 stages {
-        stage("Compile & Build Binary") {
+        stage("Parallel") {
             parallel {
 
                 node("zap"){
