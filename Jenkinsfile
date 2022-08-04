@@ -125,9 +125,9 @@ stage("Parallel"){
                     sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
                 }
 
-                stage('Maven') {
-                    sh("mvn clean verify")
-                }
+                // stage('Maven') {
+                //     sh("mvn clean verify")
+                // }
         }
 
 
