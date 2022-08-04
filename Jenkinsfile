@@ -97,24 +97,29 @@ def sluper(xmlData){
 
 stage("Parallel"){
     parallel(){
+
+        stage("zap"){
         
-        node("zap"){
+            node("zap"){
 
-            def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-            sh("ls")
+                def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+                sh("ls")
 
-            // stage('Generacion Informe') {
-            //     sh("pwd")
-            //     sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
-                
-            // }
+                // stage('Generacion Informe') {
+                //     sh("pwd")
+                //     sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
+                    
+                // }
 
-            //  stage('Build') {
-            //    stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
-            // }
+                //  stage('Build') {
+                //    stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
+                // }
 
+            }
         }
-        node("jenkinsSelenium"){
+        stage("Selenium"){
+
+            node("jenkinsSelenium"){
 
                 stage('Clone repositories') {
                     checkout scm
@@ -130,7 +135,7 @@ stage("Parallel"){
                 // }
         }
 
-
+        }
     }
 }
 
