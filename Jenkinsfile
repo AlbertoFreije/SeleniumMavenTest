@@ -105,7 +105,7 @@ pipeline{
                         label "zap"                    
                     }
                     steps{
-                        sh("pwd") 
+                        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
                     }
                 }
                 stage('Test on JenkinsSelenium') {
