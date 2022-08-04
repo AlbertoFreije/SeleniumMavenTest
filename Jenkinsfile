@@ -95,10 +95,11 @@ def sluper(xmlData){
     
 }
 
-    
-    parallel(){
+stages {
+        stage("Compile & Build Binary") {
+            parallel {
 
-            node("zap"){
+                node("zap"){
 
                 def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
                 sh("ls")
@@ -131,6 +132,9 @@ def sluper(xmlData){
                 //     sh("mvn clean verify")
                 // }
 
+        }
+                
+            }
         }
     }
 
