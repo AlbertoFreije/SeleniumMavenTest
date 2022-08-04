@@ -95,50 +95,50 @@ def sluper(xmlData){
     
 }
 
-pipeline{
-    agent none
-    stages{
-        steps(){
+// pipeline{
+//     agent none
+//     stages{
+//         steps()
 
-            stage("Test"){
-                stage("Test On zap"){
-                    agent{
-                        label "zap"                    
-                    }
-                    steps{
-                        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-                    }
-                }
+//             stage("Test"){
+//                 stage("Test On zap"){
+//                     agent{
+//                         label "zap"                    
+//                     }
+//                     steps{
+//                         def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+//                     }
+//             }
 
-        }
         
-            // parallel{
-            //     stage("Test On zap"){
-            //         agent{
-            //             label "zap"                    
-            //         }
-            //         steps{
-            //             sh("ls")
-            //         }
-            //     }
-            //     stage('Test on JenkinsSelenium') {
-            //         agent {
-            //             label "jenkinsSelenium"
-            //         }
-            //         steps {
-            //             sh("pwd") 
-            //             checkout scm
-            //             sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-            //             sleep(60) 
-            //             sh("mvn clean verify")
+        
+//             // parallel{
+//             //     stage("Test On zap"){
+//             //         agent{
+//             //             label "zap"                    
+//             //         }
+//             //         steps{
+//             //             sh("ls")
+//             //         }
+//             //     }
+//             //     stage('Test on JenkinsSelenium') {
+//             //         agent {
+//             //             label "jenkinsSelenium"
+//             //         }
+//             //         steps {
+//             //             sh("pwd") 
+//             //             checkout scm
+//             //             sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
+//             //             sleep(60) 
+//             //             sh("mvn clean verify")
                         
-            //         }
-            //     }
+//             //         }
+//             //     }
 
-            // }
-        }
-    }
-}
+//             // }
+//         }
+//     }
+// }
 
 // stages {
 //         stage("Parallel") {
@@ -183,7 +183,11 @@ pipeline{
 //         }
 //     }
 
+node("zap2"){
 
+       def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+
+}
 // node("jenkinszap"){
 
 //         stage('Generacion Informe') {
