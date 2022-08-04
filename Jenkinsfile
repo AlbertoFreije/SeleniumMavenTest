@@ -105,7 +105,7 @@ pipeline{
                         label "zap"                    
                     }
                     steps{
-                        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+                        sh("ls")
                     }
                 }
                 stage('Test on JenkinsSelenium') {
