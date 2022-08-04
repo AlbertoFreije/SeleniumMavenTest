@@ -95,11 +95,9 @@ def sluper(xmlData){
     
 }
 
-stage("Parallel"){
+    
     parallel(){
 
-        stage("zap"){
-        
             node("zap"){
 
                 def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
@@ -116,10 +114,9 @@ stage("Parallel"){
                 // }
 
             }
-        }
-        stage("Selenium"){
 
             node("jenkinsSelenium"){
+
 
                 stage('Clone repositories') {
                     checkout scm
@@ -133,11 +130,9 @@ stage("Parallel"){
                 // stage('Maven') {
                 //     sh("mvn clean verify")
                 // }
-        }
 
         }
     }
-}
 
 
 // node("jenkinszap"){
