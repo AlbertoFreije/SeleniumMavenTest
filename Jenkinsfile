@@ -116,9 +116,9 @@ pipeline{
                         sh("pwd") 
                         checkout scm
                         sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-                        timeout(20) {
-                            sh("mvn clean verify")
-                        }
+                        sleep(60) 
+                        sh("mvn clean verify")
+                        
                     }
                 }
 
