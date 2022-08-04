@@ -100,7 +100,7 @@ pipeline{
     stages{
         stage("Test"){
             parallel{
-                stage("Test On master"){
+                stage("Test On zap"){
                     agent{
                         label "zap"                    
                     }
@@ -116,7 +116,9 @@ pipeline{
                         sh("pwd") 
                         checkout scm
                         sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-                        sh("mvn clean verify")
+                        timeout(20) {
+                            sh("mvn clean verify")
+                        }
                     }
                 }
 
