@@ -204,6 +204,7 @@ node("jenkinsSelenium"){
     stage('Maven') {
         sh("mvn clean verify")
     }
+}
 
 node("jenkinszap"){
 
