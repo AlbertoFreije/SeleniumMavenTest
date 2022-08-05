@@ -186,11 +186,6 @@ def sluper(xmlData){
 node("zap2"){
 
        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-       sh("pwd")
-       sh("pwd")
-       sh("pwd")
-       sh("pwd")
-       sh("pwd")
 
 }
 // node("jenkinszap"){
