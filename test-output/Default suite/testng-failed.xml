@@ -6,8 +6,8 @@
       <class name="pruebaSelenium.Test1Test">
         <methods>
           <include name="setUp"/>
+          <include name="conectarPagina"/>
           <include name="tearDown"/>
-          <include name="findFlights"/>
         </methods>
       </class> <!-- pruebaSelenium.Test1Test -->
     </classes>

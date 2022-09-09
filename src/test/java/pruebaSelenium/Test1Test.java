@@ -22,8 +22,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Test1Test {
   
     //static String URL = "https://blazedemo.com/";
-    static String URL = "https://www.opencart.com/";
-    //static String URL = "https://www.facebook.com/";
+    //static String URL = "https://www.opencart.com/";
+    static String URL = "https://www.facebook.com/";
 	
 	protected static int timeout = 5;
 
@@ -111,8 +111,8 @@ public class Test1Test {
 		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
 		 //driver = new ChromeDriver();
 		 //String expectedTitle = "Welcome to the Simple Travel Agency!";
-		 String expectedTitle = "The best FREE and open-source eCommerce platform";
-		 //String expectedTitle = "facebook";
+		 //String expectedTitle = "The best FREE and open-source eCommerce platform";
+		 String expectedTitle = "facebook";
 	     //String actualTitle = "";
 		 //driver.navigate().to(URL);
 	     driver.get(URL);
