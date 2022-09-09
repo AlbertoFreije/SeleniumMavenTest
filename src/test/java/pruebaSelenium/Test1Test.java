@@ -22,7 +22,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Test1Test {
   
     static String URL = "https://blazedemo.com/";
-    //static String URL = "https://www.opencart.com/";
+    static String URL2 = "https://www.uniovi.es/gobiernoservicios/gobierno";
     //static String URL = "https://www.facebook.com/";
 	
 	protected static int timeout = 5;
@@ -134,6 +134,24 @@ public class Test1Test {
 		 String expectedTitle = "Flights from Paris to Buenos Aires:";
 		 textoPresentePagina(driver, expectedTitle);
 	 
+	       
+	}
+	
+	@Test 
+	public void conectarPagina2() {
+		
+		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
+		 //driver = new ChromeDriver();
+		 String expectedTitle = "Gobierno";
+		 //String expectedTitle = "The best FREE and open-source eCommerce platform";
+		 //String expectedTitle = "facebook";
+	     //String actualTitle = "";
+		 //driver.navigate().to(URL);
+	     driver.get(URL2);
+	     //actualTitle = driver.getTitle();
+	     textoPresentePagina(driver, expectedTitle);
+	    
 	       
 	}
 	
