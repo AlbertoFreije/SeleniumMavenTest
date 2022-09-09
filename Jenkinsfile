@@ -206,46 +206,46 @@ node("jenkinsSelenium"){
     }
 }
 
-// node("jenkinszap"){
+node("jenkinszap"){
 
-//         stage('Generacion Informe') {
-//             sh("pwd")
-//             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
+        stage('Generacion Informe') {
+            sh("pwd")
+            sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
             
-//         }
+        }
 
-//          stage('Build') {
-//            stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
-//         }
+         stage('Build') {
+           stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
+        }
 
-// }
+}
 
 
-//   node("jenkinsSelenium"){
+  node("jenkinsSelenium"){
 
-//      cleanWs()
-//      unstash 'prueba'
-//     //    sh("ls -la")
-//     //    sh("pwd") 
-//     //    def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-//     //    writeFile(file: nombreXML, text: inputFile.readToString())
-//     //    println("aqui1")
-//     //    sh("ls -la")
-//     //    sh("pwd")
-//        def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
-//        def adocSource = sluper(xmlContent)
-//        writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
-//        sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
-//        sh("unzip main.zip")
-//        sh("ls -la")
-//        sh("pwd")
-//        sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
-//        emailext (
-//          attachmentsPattern: '**/informeAlertas.pdf',
-//          subject: mailSubject,
-//          body: mailBody,
-//          from: mailFrom,
-//          to: mailTo
-//        )
+     cleanWs()
+     unstash 'prueba'
+    //    sh("ls -la")
+    //    sh("pwd") 
+    //    def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+    //    writeFile(file: nombreXML, text: inputFile.readToString())
+    //    println("aqui1")
+    //    sh("ls -la")
+    //    sh("pwd")
+       def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+       def adocSource = sluper(xmlContent)
+       writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
+       sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
+       sh("unzip main.zip")
+       sh("ls -la")
+       sh("pwd")
+       sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
+       emailext (
+         attachmentsPattern: '**/informeAlertas.pdf',
+         subject: mailSubject,
+         body: mailBody,
+         from: mailFrom,
+         to: mailTo
+       )
 
-//   }
+  }
