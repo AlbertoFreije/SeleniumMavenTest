@@ -21,7 +21,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Test1Test {
   
-    //static String URL = "https://blazedemo.com/";
+    static String URL2 = "https://blazedemo.com/";
     //static String URL = "https://www.opencart.com/";
     static String URL = "https://www.facebook.com/";
 	
@@ -122,20 +122,20 @@ public class Test1Test {
 	       
 	}
 	
-//	@Test 
-//	public void findFlights() {
-//		
-//		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-//		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
-//		 //driver = new ChromeDriver();
-//		 driver.navigate().to(URL);
-//		 List<WebElement> elementos = checkElement(driver, "free","/html/body/div[3]/form/div/input");
-//		 elementos.get(0).click();
-//		 String expectedTitle = "Flights from Paris to Buenos Aires:";
-//		 textoPresentePagina(driver, expectedTitle);
-//	 
-//	       
-//	}
+	@Test 
+	public void findFlights() {
+		
+		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
+		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+		 //driver = new ChromeDriver();
+		 driver.navigate().to(URL2);
+		 List<WebElement> elementos = checkElement(driver, "free","/html/body/div[3]/form/div/input");
+		 elementos.get(0).click();
+		 String expectedTitle = "Flights from Paris to Buenos Aires:";
+		 textoPresentePagina(driver, expectedTitle);
+	 
+	       
+	}
 	
 	@AfterMethod
 	public void tearDown() {
