@@ -207,8 +207,7 @@ node("jenkinsSelenium"){
 }
 
 node("jenkinszap"){
-
-        sh("rm -rf /root/.ZAP/session.*")
+    
         stage('Generacion Informe') {
             sh("pwd")
             // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
@@ -262,9 +261,9 @@ node("jenkinszap"){
             // -H 'X-ZAP-API-Key: change-me-9203935709'")
 
 
-            // sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
-            // -H 'Accept: application/json' \
-            // -H 'X-ZAP-API-Key: change-me-9203935709'")
+            sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
+            -H 'Accept: application/json' \
+            -H 'X-ZAP-API-Key: change-me-9203935709'")
 
 }
 
