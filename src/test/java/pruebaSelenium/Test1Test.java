@@ -137,23 +137,23 @@ public class Test1Test {
 	       
 	}
 	
-//	@Test 
-//	public void conectarPagina2() {
-//		
-//		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
-//		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
-//		 //driver = new ChromeDriver();
-//		 String expectedTitle = "Gobierno";
-//		 //String expectedTitle = "The best FREE and open-source eCommerce platform";
-//		 //String expectedTitle = "facebook";
-//	     //String actualTitle = "";
-//		 //driver.navigate().to(URL);
-//	     driver.get(URL2);
-//	     //actualTitle = driver.getTitle();
-//	     textoPresentePagina(driver, expectedTitle);
-//	    
-//	       
-//	}
+	@Test 
+	public void conectarPagina2() {
+		
+		 //System.setProperty("webdriver.chrome.driver","/home/seluser/workspace/Selenium-Zap/chromedriver");
+		 //System.setProperty("webdriver.chrome.driver","C:\\Users\\alberto.freije\\OneDrive - Ricoh Europe PLC\\Desktop\\chromedriver_win32\\chromedriver.exe");
+		 //driver = new ChromeDriver();
+		 String expectedTitle = "Gobierno";
+		 //String expectedTitle = "The best FREE and open-source eCommerce platform";
+		 //String expectedTitle = "facebook";
+	     //String actualTitle = "";
+		 //driver.navigate().to(URL);
+	     driver.get(URL2);
+	     //actualTitle = driver.getTitle();
+	     textoPresentePagina(driver, expectedTitle);
+	    
+	       
+	}
 	
 	@AfterMethod
 	public void tearDown() {
