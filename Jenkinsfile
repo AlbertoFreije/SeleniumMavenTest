@@ -89,7 +89,7 @@ def sluper(xmlData){
     adocSource += tablaAlertsDetail
     adocSource += "|=== \n"
     adocSource += " \n"
-    adocSource += " \n"
+    adocSource += " \n"\docs\api\
     adocSource += " \n"
     return adocSource
     
@@ -257,6 +257,11 @@ node("jenkinszap"){
 
         
             sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
+            -H 'Accept: application/json' \
+            -H 'X-ZAP-API-Key: change-me-9203935709'")
+
+
+            sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
             -H 'Accept: application/json' \
             -H 'X-ZAP-API-Key: change-me-9203935709'")
 
