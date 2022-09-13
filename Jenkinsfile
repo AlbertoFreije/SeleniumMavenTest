@@ -11,9 +11,7 @@ def sluper(xmlData){
     def adocSource = "";
     def tablaAlerts = "";
     def tablaAlertsDetail = "";
-    println(xmlData);
     def xmlContent = new XmlSlurper().parseText(xmlData)
-    println("aqui2")
     adocSource += ":doctype: book\n"
     adocSource += ":hardbreaks:\n"
     adocSource += ":experimental:\n"
