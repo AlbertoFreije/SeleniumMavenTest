@@ -95,100 +95,6 @@ def sluper(xmlData){
     
 }
 
-// pipeline{
-//     agent none
-//     stages{
-//         steps()
-
-//             stage("Test"){
-//                 stage("Test On zap"){
-//                     agent{
-//                         label "zap"                    
-//                     }
-//                     steps{
-//                         def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-//                     }
-//             }
-
-        
-        
-//             // parallel{
-//             //     stage("Test On zap"){
-//             //         agent{
-//             //             label "zap"                    
-//             //         }
-//             //         steps{
-//             //             sh("ls")
-//             //         }
-//             //     }
-//             //     stage('Test on JenkinsSelenium') {
-//             //         agent {
-//             //             label "jenkinsSelenium"
-//             //         }
-//             //         steps {
-//             //             sh("pwd") 
-//             //             checkout scm
-//             //             sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-//             //             sleep(60) 
-//             //             sh("mvn clean verify")
-                        
-//             //         }
-//             //     }
-
-//             // }
-//         }
-//     }
-// }
-
-// stages {
-//         stage("Parallel") {
-//             parallel {
-
-//                 node("zap"){
-
-//                 def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-//                 sh("ls")
-
-//                 // stage('Generacion Informe') {
-//                 //     sh("pwd")
-//                 //     sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
-                    
-//                 // }
-
-//                 //  stage('Build') {
-//                 //    stash name: 'prueba', includes: '**/owasp-quick-scan-report.xml'
-//                 // }
-
-//             }
-
-//             node("jenkinsSelenium"){
-
-
-//                 stage('Clone repositories') {
-//                     checkout scm
-//                 }
-
-//                 stage('Charge chrome driver') {
-//                     sh("pwd") 
-//                     sh "cp /home/seluser/chromedriver /home/seluser/workspace/Selenium-Zap"
-//                 }
-
-//                 // stage('Maven') {
-//                 //     sh("mvn clean verify")
-//                 // }
-
-//         }
-                
-//             }
-//         }
-//     }
-
-// node("zap2"){
-
-//        def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-
-// }
-
 node("jenkinsSelenium"){
 
 
@@ -207,12 +113,9 @@ node("jenkinsSelenium"){
 }
 
 node("jenkinszap"){
-    
+
         stage('Generacion Informe') {
             sh("pwd")
-            // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
-            // -H 'Accept: application/json' \
-            // -H 'X-ZAP-API-Key: change-me-9203935709'")
             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
             
         }
@@ -228,42 +131,33 @@ node("jenkinszap"){
 
      cleanWs()
      unstash 'prueba'
-    //    sh("ls -la")
-    //    sh("pwd") 
-    //    def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-    //    writeFile(file: nombreXML, text: inputFile.readToString())
-    //    println("aqui1")
-    //    sh("ls -la")
-    //    sh("pwd")
-       def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
-       def adocSource = sluper(xmlContent)
-       writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
-       sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
-       sh("unzip main.zip")
-       sh("ls -la")
-       sh("pwd")
-       sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
-       emailext (
+     def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+     def adocSource = sluper(xmlContent)
+     writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
+     sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
+     sh("unzip main.zip")
+     sh("ls -la")
+     sh("pwd")
+     sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
+     emailext (
          attachmentsPattern: '**/informeAlertas.pdf',
          subject: mailSubject,
          body: mailBody,
          from: mailFrom,
          to: mailTo
-       )
+     )
 
   }
 
   node("jenkinszap"){
 
-        
-            // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
-            // -H 'Accept: application/json' \
-            // -H 'X-ZAP-API-Key: change-me-9203935709'")
+    // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
+    // -H 'Accept: application/json' \
+    // -H 'X-ZAP-API-Key: change-me-9203935709'")
 
-
-            sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
-            -H 'Accept: application/json' \
-            -H 'X-ZAP-API-Key: change-me-9203935709'")
+    sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
+        -H 'Accept: application/json' \
+        -H 'X-ZAP-API-Key: change-me-9203935709'")
 
 }
 
