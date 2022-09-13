@@ -89,7 +89,7 @@ def sluper(xmlData){
     adocSource += tablaAlertsDetail
     adocSource += "|=== \n"
     adocSource += " \n"
-    adocSource += " \n"\docs\api\
+    adocSource += " \n"
     adocSource += " \n"
     return adocSource
     
