@@ -5,6 +5,8 @@ def mailSubject = "INFORME VULNERABILIDADES"
 def mailFrom = 'AlbertoFreijeCarballo@gmail.com'
 def mailTo = 'Alberto.Freije@Ricoh.es'
 def nombreXML = "owasp-quick-scan-report.xml"
+def ZAP_HOST = "zap"
+def ZAP_PORT = "8090"
 
 @NonCPS
 def sluper(xmlData){
@@ -110,6 +112,49 @@ node("jenkinsSelenium"){
     }
 }
 
+def wait_for_passive_scan_to_complete(){
+
+        STATUS_URL="http://$S1:$2/"
+        STATUS_URL+="/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET"
+
+        SCAN_STATUS=0
+        until [$SCAN_STATUS -eq 0]; do
+            sleep 10
+            SCAN_STATUS_RES = $(curl -s $STATUS_URL)
+            SCAN_STATUS=$(echo $SCAN_STATUS_RES | jq -r '.recordToScan')ç
+
+            echo Scan $SCAN_STATUS% complete
+            done
+        echo Passive Scan Complete
+}
+
+node("jenkinszap"){
+
+    wait_for_passive_scan_to_complete $ZAP_HOST $ZAP_PORT
+
+     def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
+
+    println("DEBUG: ${microResponse}");
+
+    def cmdbMicroProps = readJSON text: microResponse;
+
+    println("Respuesta " + cmdbMicroProps);
+
+    // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
+    // -H 'Accept: application/json' \
+    // -H 'X-ZAP-API-Key: change-me-9203935709'")
+
+    // sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
+    //     -H 'Accept: application/json' \
+    //     -H 'X-ZAP-API-Key: change-me-9203935709'")
+
+}
+
+
+
+
+
+
 node("jenkinszap"){
 
         stage('Generacion Informe') {
@@ -123,8 +168,6 @@ node("jenkinszap"){
         }
 
 }
-
-
   node("jenkinsSelenium"){
 
      cleanWs()
@@ -146,25 +189,4 @@ node("jenkinszap"){
      )
 
   }
-
-  node("jenkinszap"){
-
-
-     def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
-
-    println("DEBUG: ${microResponse}");
-
-    def cmdbMicroProps = readJSON text: microResponse;
-
-    println("Respuesta " + cmdbMicroProps);
-
-    // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
-    // -H 'Accept: application/json' \
-    // -H 'X-ZAP-API-Key: change-me-9203935709'")
-
-    // sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
-    //     -H 'Accept: application/json' \
-    //     -H 'X-ZAP-API-Key: change-me-9203935709'")
-
-}
 
