@@ -114,7 +114,7 @@ node("jenkinsSelenium"){
 
 def wait_for_passive_scan_to_complete(){
 
-        STATUS_URL="http://$1:$2/"
+        STATUS_URL="http://zap:8090/"
         STATUS_URL+="/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET"
 
         SCAN_STATUS=0
@@ -130,7 +130,7 @@ def wait_for_passive_scan_to_complete(){
 
 node("jenkinszap"){
 
-    wait_for_passive_scan_to_complete $ZAP_HOST $ZAP_PORT
+    wait_for_passive_scan_to_complete 
 
      def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
 
