@@ -117,14 +117,13 @@ def wait_for_passive_scan_to_complete(){
         STATUS_URL="http://zap:8090/"
         STATUS_URL+="/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET"
 
-        SCAN_STATUS=0
-        until [$SCAN_STATUS -eq 0]; do
+        SCAN_STATUS=100
+
+        while (SCAN_STATUS != 0){
             sleep 10
             SCAN_STATUS_RES = $(curl -s $STATUS_URL)
-            SCAN_STATUS=$(echo $SCAN_STATUS_RES | jq -r '.recordToScan')ç
-
-            echo Scan $SCAN_STATUS% complete
-            done
+            SCAN_STATUS=$(echo $SCAN_STATUS_RES | jq -r '.recordToScan')
+        }
         echo Passive Scan Complete
 }
 
