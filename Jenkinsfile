@@ -114,7 +114,7 @@ node("jenkinsSelenium"){
 
 def wait_for_passive_scan_to_complete(){
 
-        STATUS_URL="http://$S1:$2/"
+        STATUS_URL="http://$1:$2/"
         STATUS_URL+="/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET"
 
         SCAN_STATUS=0
