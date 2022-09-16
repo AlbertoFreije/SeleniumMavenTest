@@ -149,6 +149,15 @@ node("jenkinszap"){
 
   node("jenkinszap"){
 
+
+     def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
+
+    println("DEBUG: ${microResponse}");
+
+    def cmdbMicroProps = readJSON text: microResponse;
+
+    println("Respuesta " + cmdbMicroProps);
+
     // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
     // -H 'Accept: application/json' \
     // -H 'X-ZAP-API-Key: change-me-9203935709'")
