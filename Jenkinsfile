@@ -136,7 +136,7 @@ def active_scan(){
 
     println("Respuesta " + sites);
     sites.sites.each{
-        e -> println(e)
+        e -> curl "http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url="+e+"&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId="
     } 
 
 }
