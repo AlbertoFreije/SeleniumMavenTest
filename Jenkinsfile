@@ -129,17 +129,25 @@ def wait_for_passive_scan_to_complete(){
         echo "Passive Scan Complete"
 }
 
+def active_scan(){
+    
+    def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
+
+    def sites = readJSON text: microResponse;
+
+    println("Respuesta " + sites);
+    sites.sites.each{
+        e -> println(e)
+    } 
+
+}
+
 node("jenkinszap"){
 
     wait_for_passive_scan_to_complete() 
 
-    def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
 
-    println("DEBUG: ${microResponse}");
 
-    def cmdbMicroProps = readJSON text: microResponse;
-
-    println("Respuesta " + cmdbMicroProps);
 
     // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
     // -H 'Accept: application/json' \
