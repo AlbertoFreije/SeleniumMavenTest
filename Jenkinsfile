@@ -137,11 +137,11 @@ def active_scan(){
     println("Respuesta " + sites);
     sites.sites.each{ e ->
          println(e)
-         sh("curl http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url="+e+"&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=")
+         //sh("curl http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url="+e+"&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=")
+         sh("curl \"http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url=https://blazemeter.datapipe.prodperfect.com&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=\"")
     } 
 
 }
-
 node("jenkinszap"){
 
     wait_for_passive_scan_to_complete() 
