@@ -114,12 +114,13 @@ node("jenkinsSelenium"){
 def wait_for_passive_scan_to_complete(){
 
         def STATUS_URL="http://zap:8090/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET"
-        SCAN_STATUS=100
+        def SCAN_STATUS=100
 
         while (SCAN_STATUS != 0){
             sleep 10
             def SCAN_STATUS_RES = sh("curl http://zap:8090/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET" )
             println(SCAN_STATUS_RES)
+            SCAN_STATUS = SCAN_STATUS_RES.recordsToScan;
         }
         echo Passive Scan Complete
 }
