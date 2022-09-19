@@ -120,6 +120,10 @@ def wait_for_passive_scan_to_complete(){
             sleep 10
             def SCAN_STATUS_RES = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET" ''' ).trim();
             println(SCAN_STATUS_RES);
+            def STATUS = readJSON text: SCAN_STATUS_RES;
+            println("Respuesta " + STATUS);
+
+
             //def STATUS = new XmlSlurper().parseText(SCAN_STATUS_RES)
             //println(STATUS)
             //SCAN_STATUS = STATUS.recordsToScan
@@ -131,7 +135,7 @@ node("jenkinszap"){
 
     wait_for_passive_scan_to_complete() 
 
-     def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
+    def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
 
     println("DEBUG: ${microResponse}");
 
