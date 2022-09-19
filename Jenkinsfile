@@ -123,6 +123,7 @@ def wait_for_passive_scan_to_complete(){
             def STATUS = readJSON text: SCAN_STATUS_RES;
             println("Respuesta " + STATUS.recordsToScan.getClass());
             SCAN_STATUS = STATUS.recordsToScan.toInteger()
+            println("hola")
             
         }
         echo Passive Scan Complete
