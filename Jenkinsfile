@@ -119,7 +119,7 @@ def wait_for_passive_scan_to_complete(){
         while (SCAN_STATUS != 0){
             sleep 10
             def SCAN_STATUS_RES = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET" ''' ).trim();
-            println(SCAN_STATUS_RES)
+            println("${SCAN_STATUS_RES}");
             def STATUS = new XmlSlurper().parseText(SCAN_STATUS_RES)
             println(STATUS)
             //SCAN_STATUS = STATUS.recordsToScan
