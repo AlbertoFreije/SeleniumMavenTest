@@ -126,7 +126,7 @@ def wait_for_passive_scan_to_complete(){
 
 node("jenkinszap"){
 
-    wait_for_passive_scan_to_complete 
+    wait_for_passive_scan_to_complete() 
 
      def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/core/view/sites/?apikey=change-me-9203935709" ''').trim();
 
