@@ -126,7 +126,7 @@ def wait_for_passive_scan_to_complete(){
             println("hola")
             
         }
-        echo Passive Scan Complete
+        echo "Passive Scan Complete"
 }
 
 node("jenkinszap"){
