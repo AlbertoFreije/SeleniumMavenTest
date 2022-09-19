@@ -119,8 +119,9 @@ def wait_for_passive_scan_to_complete(){
         while (SCAN_STATUS != 0){
             sleep 10
             def SCAN_STATUS_RES = sh("curl http://zap:8090/JSON/pscan/view/recordsToScan/?apikey=change-me-9203935709&formMethod=GET" )
-            println(SCAN_STATUS_RES)
-            SCAN_STATUS = SCAN_STATUS_RES.recordsToScan;
+            def STATUS = new XmlSlurper().parseText(SCAN_STATUS_RES)
+            println(STATUS.recordsToScan)
+            SCAN_STATUS = STATUS.recordsToScan
         }
         echo Passive Scan Complete
 }
