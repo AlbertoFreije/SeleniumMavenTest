@@ -122,7 +122,7 @@ def wait_for_passive_scan_to_complete(){
             println(SCAN_STATUS_RES);
             def STATUS = readJSON text: SCAN_STATUS_RES;
             println("Respuesta " + STATUS.recordsToScan.getClass());
-            SCAN_STATUS = STATUS.recordsToScan.toInt();
+            SCAN_STATUS = STATUS.recordsToScan as Integer;
 
 
             //def STATUS = new XmlSlurper().parseText(SCAN_STATUS_RES)
