@@ -141,10 +141,11 @@ def active_scan(){
          def id = readJSON text: scan;
          def scanId = id.scan.toInteger()
          println(scanId)
-        //  def status = 0;
-        //  while(status != 100){
-            
-        //  }
+         def status = 0;
+         while(status != 100){
+             def getStatus = sh(returnStdout: true, script: " curl \"http://zap:8090/JSON/ascan/view/status/?apikey=change-me-9203935709&scanid="+scanId+" \"").trim();
+             println("Esta es un estado ... " + getStatus)
+         }
     } 
 
 }
