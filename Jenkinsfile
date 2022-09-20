@@ -154,7 +154,7 @@ def active_scan(){
 node("jenkinszap"){
 
     wait_for_passive_scan_to_complete() 
-    active_scan()
+    //active_scan()
 
 
 
