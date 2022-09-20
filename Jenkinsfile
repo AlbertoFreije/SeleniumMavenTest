@@ -145,6 +145,7 @@ def active_scan(){
          while(status != 100){
              def getStatus = sh(returnStdout: true, script: " curl \"http://zap:8090/JSON/ascan/view/status/?apikey=change-me-9203935709&scanid="+scanId+" \"").trim();
              println("Esta es un estado ... " + getStatus)
+             status = getStatus.status.toInteger();
          }
     } 
 
