@@ -137,7 +137,7 @@ def active_scan(){
     println("Respuesta " + sites);
     sites.sites.each{ e ->
          println(e)
-         def scanId = sh(returnStdout: true, script: ''' curl "http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url="+e+"&recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=\" ''').trim();
+         def scanId = sh(returnStdout: true, script: " curl \"http://zap:8090/JSON/ascan/action/scan/?apikey=change-me-9203935709&url="+e+" &recurse=true&inScopeOnly=&scanPolicyName=&method=&postData=&contextId=\"").trim();
          println(scanId);
         //  def status = 0;
         //  while(status != 100){
