@@ -175,6 +175,9 @@ node("jenkinszap"){
 
         stage('Generacion Informe') {
             sh("pwd")
+            def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/OTHER/core/other/xmlreport/?apikey=change-me-9203935709" ''').trim();
+            def reporte = readXML text: microResponse;
+            println("reportee" + reporte);
             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
             
         }
