@@ -154,9 +154,10 @@ def active_scan(){
 node("jenkinszap"){
 
     wait_for_passive_scan_to_complete() 
+    sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
+    -H 'Accept: application/json' \
+    -H 'X-ZAP-API-Key: change-me-9203935709'")
     active_scan()
-
-
 
     // sh("curl -X GET http://zap:8090/JSON/alert/action/deleteAllAlerts/ \
     // -H 'Accept: application/json' \
