@@ -175,9 +175,9 @@ node("jenkinszap"){
 
         stage('Generacion Informe') {
             sh("pwd")
-            def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/OTHER/core/other/xmlreport/?apikey=change-me-9203935709" ''').trim();
-            def reporte = readJSON text: microResponse;
-            println("reportee" + reporte);
+            //def microResponse = sh(returnStdout: true, script: ''' curl "http://zap:8090/OTHER/core/other/xmlreport/?apikey=change-me-9203935709" ''').trim();
+            //def reporte = readJSON text: microResponse;
+            //println("reportee" + reporte);
             sh("zap-cli --verbose  --api-key change-me-9203935709 -p 8090 report -o /zap/workspace/Selenium-Zap/owasp-quick-scan-report.xml --output-format xml")
             
         }
@@ -213,9 +213,9 @@ node("jenkinszap"){
 
     sh("curl \"http://zap:8090/JSON/ascan/action/removeAllScans/?apikey=change-me-9203935709\"")
 
-    sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
-        -H 'Accept: application/json' \
-        -H 'X-ZAP-API-Key: change-me-9203935709'")
+    // sh("curl -X GET http://zap:8090/JSON/core/action/shutdown/ \
+    //     -H 'Accept: application/json' \
+    //     -H 'X-ZAP-API-Key: change-me-9203935709'")
 
 }
 
